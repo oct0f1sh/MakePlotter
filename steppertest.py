@@ -1,0 +1,38 @@
+from Raspi_MotorHAT import Raspi_MotorHAT, Raspi_StepperMotor
+
+import atexit
+import time
+
+# create default object
+hat = Raspi_MotorHAT(0x6F)
+
+# autodisable motors on shutdown
+def turnOffMotors():
+    print('Turning off motors')
+    hat.getMotor(1).run(Raspi_MotorHAT.RELEASE)
+    hat.getMotor(2).run(Raspi_MotorHAT.RELEASE)
+    hat.getMotor(3).run(Raspi_MotorHAT.RELEASE)
+    hat.getMotor(4).run(Raspi_MotorHAT.RELEASE)
+
+atexit.register(turnOffMotors)
+
+stepper1 = hat.getStepper(200, 1)
+stepper1.setSpeed(30) # 30 RPM
+
+stepper2 = hat.getStepper(200, 2)
+stepper2.setSpeed(30)
+
+while True:
+    print('Stepper 1 forward')
+    stepper1.step(200, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
+    print('Stepper 1 backward')
+    stepper1.step(200, Raspi_MotorHAT.BACKWARD, Raspi_MotorHAT.DOUBLE)
+
+    time.sleep(2)
+
+    print('Stepper 2 forward')
+    stepper2.step(200, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
+    print('Stepper 2 backward')
+    stepper2.step(200, Raspi_MotorHAT.BACKWARD, Raspi_MotorHAT.DOUBLE)
+
+    time.sleep(2)
