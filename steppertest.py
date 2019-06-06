@@ -25,14 +25,22 @@ stepper2.setSpeed(30)
 while True:
     print('Stepper 1 forward')
     stepper1.step(200, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
+    time.sleep(3)
     print('Stepper 1 backward')
     stepper1.step(200, Raspi_MotorHAT.BACKWARD, Raspi_MotorHAT.DOUBLE)
 
-    time.sleep(2)
+    time.sleep(3)
 
     print('Stepper 2 forward')
     stepper2.step(200, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
+    time.sleep(3)
     print('Stepper 2 backward')
     stepper2.step(200, Raspi_MotorHAT.BACKWARD, Raspi_MotorHAT.DOUBLE)
 
-    time.sleep(2)
+    time.sleep(3)
+
+    print('Both steppers forward')
+    stepper1.step(200, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
+    stepper2.step(200, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
+
+    time.sleep(3)
