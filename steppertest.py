@@ -46,7 +46,10 @@ while True:
     print('Both steppers forward')
     # stepper1.step(200, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
     # stepper2.step(200, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
-    threading.Thread(target=stepperWorker, args=(stepper1, 200, Raspi_MotorHAT.FORWARD))
-    threading.Thread(target=stepperWorker, args=(stepper2, 200, Raspi_MotorHAT.FORWARD))
-    
+    st1 = threading.Thread(target=stepperWorker, args=(stepper1, 200, Raspi_MotorHAT.FORWARD))
+    st2 = threading.Thread(target=stepperWorker, args=(stepper2, 200, Raspi_MotorHAT.FORWARD))
+
+    st1.start()
+    st2.start()
+
     time.sleep(3)
