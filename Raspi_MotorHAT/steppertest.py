@@ -38,8 +38,11 @@ stepper2.setSpeed(60)
 
 styles = [Raspi_MotorHAT.DOUBLE, Raspi_MotorHAT.INTERLEAVE, Raspi_MotorHAT.MICROSTEP]
 steppers = [stepper1, stepper2]
+distances = [50, 100, 200]
 
-while True:
+# test styles
+'''
+for _ in range(5):
     for stepperNum, stepper in enumerate(steppers):
         print('stepper', stepperNum + 1)
 
@@ -49,32 +52,15 @@ while True:
             stepperWorker(stepper, 100, style=style)
 
             time.sleep(1)
+'''
 
-# while True:
-#     print('Stepper 1 forward DOUBLE')
-#     stepperWorker(stepper1, 100)
+# test distances
+for _ in range(5):
+    for stepperNum, stepper in enumerate(steppers):
 
-#     time.sleep(1)
+        for distance in distances:
+            print(stepper, distance)
 
-#     print('Stepper 1 forward MICROSTEP')
-#     stepperWorker(stepper1, 100, style = Raspi_MotorHAT.MICROSTEP)
+            stepperWorker(stepper, distance)
 
-#     time.sleep(1)
-
-#     print('Stepper 1 forward INTERLEAVE')
-#     stepperWorker(stepper1, 100, style=Raspi_MotorHAT.INTERLEAVE)
-    
-#     time.sleep(1)
-
-#     print('Stepper 2 forward')
-#     stepperWorker(stepper2, 100)
-
-#     print('Both steppers forward DOUBLE')
-#     st1 = stepperWorkerAsync(stepper1, 100)
-#     st2 = stepperWorkerAsync(stepper2, 100)
-
-#     while st1.isAlive() or st2.isAlive():
-#         pass
-
-#     print('restarting')
-#     time.sleep(3)
+            time.sleep(0.5)
