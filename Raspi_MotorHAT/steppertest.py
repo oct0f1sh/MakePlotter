@@ -61,6 +61,6 @@ for _ in range(5):
         for distance in distances:
             print(stepperNum, distance)
 
-            stepperWorker(stepper, distance)
+            stepperWorker(stepper, distance, style=Raspi_MotorHAT.MICROSTEP)
 
             time.sleep(0.5)
