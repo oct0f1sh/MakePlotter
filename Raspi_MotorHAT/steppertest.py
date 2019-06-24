@@ -30,10 +30,10 @@ def stepperWorkerAsync(stepper, steps, direction = Raspi_MotorHAT.FORWARD, style
 
 atexit.register(turnOffMotors)
 
-stepper1 = hat.getStepper(100, 1)
+stepper1 = hat.getStepper(200, 1)
 stepper1.setSpeed(60) # RPM
 
-stepper2 = hat.getStepper(100, 2)
+stepper2 = hat.getStepper(200, 2)
 stepper2.setSpeed(60)
 
 styles = [Raspi_MotorHAT.DOUBLE, Raspi_MotorHAT.INTERLEAVE, Raspi_MotorHAT.MICROSTEP]
@@ -59,7 +59,7 @@ for _ in range(5):
     for stepperNum, stepper in enumerate(steppers):
 
         for distance in distances:
-            print(stepper, distance)
+            print(stepperNum, distance)
 
             stepperWorker(stepper, distance)
 
