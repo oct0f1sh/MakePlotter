@@ -16,9 +16,9 @@ def turnOffMotors():
     hat.getMotor(4).run(Raspi_MotorHAT.RELEASE)
 
 def stepperWorker(stepper, steps, direction = Raspi_MotorHAT.FORWARD, style = Raspi_MotorHAT.DOUBLE):
-    print('stepping...')
+    # print('stepping...')
     stepper.step(steps, direction, style)
-    print('done stepping')
+    # print('done stepping')
 
     # while stepper.isAlive():
     #     pass
@@ -47,6 +47,8 @@ while True:
             print(style)
 
             stepperWorker(stepper, 100, style=style)
+
+            time.sleep(1)
 
 # while True:
 #     print('Stepper 1 forward DOUBLE')
