@@ -37,26 +37,25 @@ stepper2 = hat.getStepper(100, 2)
 stepper2.setSpeed(60)
 
 while True:
-    print('Stepper 1 forward')
-    # stepper1.step(100, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
-    # print('Stepper 1 backward')
-    # stepper1.step(200, Raspi_MotorHAT.BACKWARD, Raspi_MotorHAT.DOUBLE)
+    print('Stepper 1 forward DOUBLE')
     stepperWorker(stepper1, 100)
 
-    # time.sleep(3)
+    time.sleep(1)
+
+    print('Stepper 1 forward MICROSTEP')
+    stepperWorker(stepper1, 100, style = Raspi_MotorHAT.MICROSTEP)
+
+    time.sleep(1)
+
+    print('Stepper 1 forward INTERLEAVE')
+    stepperWorker(stepper1, 100, style=Raspi_MotorHAT.INTERLEAVE)
+    
+    time.sleep(1)
 
     print('Stepper 2 forward')
-    # stepper2.step(100, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
-    # print('Stepper 2 backward')
-    # stepper2.step(200, Raspi_MotorHAT.BACKWARD, Raspi_MotorHAT.DOUBLE)
     stepperWorker(stepper2, 100)
-    time.sleep(3)
 
-    print('Both steppers forward')
-    # stepper1.step(200, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
-    # stepper2.step(200, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
-    # st1 = threading.Thread(target=stepperWorker, args=(stepper1, 100, Raspi_MotorHAT.FORWARD))
-    # st2 = threading.Thread(target=stepperWorker, args=(stepper2, 100, Raspi_MotorHAT.FORWARD))
+    print('Both steppers forward DOUBLE')
     st1 = stepperWorkerAsync(stepper1, 100)
     st2 = stepperWorkerAsync(stepper2, 100)
 
