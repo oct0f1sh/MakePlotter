@@ -20,8 +20,8 @@ def stepperWorker(stepper, steps, direction = Raspi_MotorHAT.FORWARD, style = Ra
     stepper.step(steps, direction, style)
     print('done stepping')
 
-    while stepper.isAlive():
-        pass
+    # while stepper.isAlive():
+    #     pass
 
 def stepperWorkerAsync(stepper, steps, direction = Raspi_MotorHAT.FORWARD, style = Raspi_MotorHAT.DOUBLE):
     thread = threading.Thread(target=stepper.step, args=(steps, direction, style))
