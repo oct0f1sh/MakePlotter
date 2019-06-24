@@ -30,10 +30,10 @@ def stepperWorkerAsync(stepper, steps, direction = Raspi_MotorHAT.FORWARD, style
 
 atexit.register(turnOffMotors)
 
-stepper1 = hat.getStepper(200, 1)
+stepper1 = hat.getStepper(100, 1)
 stepper1.setSpeed(60) # RPM
 
-stepper2 = hat.getStepper(200, 2)
+stepper2 = hat.getStepper(100, 2)
 stepper2.setSpeed(60)
 
 while True:
@@ -41,7 +41,7 @@ while True:
     # stepper1.step(100, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
     # print('Stepper 1 backward')
     # stepper1.step(200, Raspi_MotorHAT.BACKWARD, Raspi_MotorHAT.DOUBLE)
-    stepperWorker(stepper1, 200)
+    stepperWorker(stepper1, 100)
 
     # time.sleep(3)
 
@@ -49,7 +49,7 @@ while True:
     # stepper2.step(100, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
     # print('Stepper 2 backward')
     # stepper2.step(200, Raspi_MotorHAT.BACKWARD, Raspi_MotorHAT.DOUBLE)
-    stepperWorker(stepper2, 200)
+    stepperWorker(stepper2, 100)
     time.sleep(3)
 
     print('Both steppers forward')
@@ -57,8 +57,8 @@ while True:
     # stepper2.step(200, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
     # st1 = threading.Thread(target=stepperWorker, args=(stepper1, 100, Raspi_MotorHAT.FORWARD))
     # st2 = threading.Thread(target=stepperWorker, args=(stepper2, 100, Raspi_MotorHAT.FORWARD))
-    st1 = stepperWorkerAsync(stepper1, 200)
-    st2 = stepperWorkerAsync(stepper2, 200)
+    st1 = stepperWorkerAsync(stepper1, 100)
+    st2 = stepperWorkerAsync(stepper2, 100)
 
     while st1.isAlive() or st2.isAlive():
         pass
