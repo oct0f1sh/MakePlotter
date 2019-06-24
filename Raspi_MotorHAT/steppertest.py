@@ -36,31 +36,43 @@ stepper1.setSpeed(60) # RPM
 stepper2 = hat.getStepper(100, 2)
 stepper2.setSpeed(60)
 
+styles = [Raspi_MotorHAT.DOUBLE, Raspi_MotorHAT.INTERLEAVE, Raspi_MotorHAT.MICROSTEP]
+steppers = [stepper1, stepper2]
+
 while True:
-    print('Stepper 1 forward DOUBLE')
-    stepperWorker(stepper1, 100)
+    for stepperNum, stepper in enumerate(steppers):
+        print('stepper', stepperNum + 1)
 
-    time.sleep(1)
+        for style in styles:
+            print(style)
 
-    print('Stepper 1 forward MICROSTEP')
-    stepperWorker(stepper1, 100, style = Raspi_MotorHAT.MICROSTEP)
+            stepperWorker(stepper, 100, style=style)
 
-    time.sleep(1)
+# while True:
+#     print('Stepper 1 forward DOUBLE')
+#     stepperWorker(stepper1, 100)
 
-    print('Stepper 1 forward INTERLEAVE')
-    stepperWorker(stepper1, 100, style=Raspi_MotorHAT.INTERLEAVE)
+#     time.sleep(1)
+
+#     print('Stepper 1 forward MICROSTEP')
+#     stepperWorker(stepper1, 100, style = Raspi_MotorHAT.MICROSTEP)
+
+#     time.sleep(1)
+
+#     print('Stepper 1 forward INTERLEAVE')
+#     stepperWorker(stepper1, 100, style=Raspi_MotorHAT.INTERLEAVE)
     
-    time.sleep(1)
+#     time.sleep(1)
 
-    print('Stepper 2 forward')
-    stepperWorker(stepper2, 100)
+#     print('Stepper 2 forward')
+#     stepperWorker(stepper2, 100)
 
-    print('Both steppers forward DOUBLE')
-    st1 = stepperWorkerAsync(stepper1, 100)
-    st2 = stepperWorkerAsync(stepper2, 100)
+#     print('Both steppers forward DOUBLE')
+#     st1 = stepperWorkerAsync(stepper1, 100)
+#     st2 = stepperWorkerAsync(stepper2, 100)
 
-    while st1.isAlive() or st2.isAlive():
-        pass
+#     while st1.isAlive() or st2.isAlive():
+#         pass
 
-    print('restarting')
-    time.sleep(3)
+#     print('restarting')
+#     time.sleep(3)
