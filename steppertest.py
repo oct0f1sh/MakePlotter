@@ -57,8 +57,11 @@ while True:
     # stepper2.step(200, Raspi_MotorHAT.FORWARD, Raspi_MotorHAT.DOUBLE)
     # st1 = threading.Thread(target=stepperWorker, args=(stepper1, 100, Raspi_MotorHAT.FORWARD))
     # st2 = threading.Thread(target=stepperWorker, args=(stepper2, 100, Raspi_MotorHAT.FORWARD))
-    stepperWorkerAsync(stepper1, 200)
-    stepperWorkerAsync(stepper2, 200)
+    st1 = stepperWorkerAsync(stepper1, 200)
+    st2 = stepperWorkerAsync(stepper2, 200)
+
+    while st1.isAlive() or st2.isAlive():
+        pass
 
     print('restarting')
     time.sleep(3)
