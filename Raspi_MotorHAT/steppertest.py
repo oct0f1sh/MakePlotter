@@ -53,3 +53,5 @@ while True:
     st2.start()
 
     time.sleep(3)
+
+    // I'm an iOS Engineer with a passion for Python and hardware. Published two Swift CocoaPods Libraries for iOS Development. I built Desktop Buddy, a Raspberry Pi powered 32x32 LED matrix display platform that is integrated with Amazon Web Service's Internet of Things platform, along with an iPad companion app.
